@@ -22,13 +22,13 @@ class PostController {
     });
   }
 
-  Future<List<comment>> fetchComments(int id) async {
+  Future<List<comments>> fetchComments(int id) async {
     return await PostService().fetchComment(id).then((res) {
       if (res.statusCode == HttpStatus.ok) {
         var jsonData = jsonDecode(res.body);
         return List.generate(
           jsonData.length,
-          (index) => comment.fromMap(jsonData[index]),
+          (index) => comments.fromMap(jsonData[index]),
         );
       } else {
         throw Exception();

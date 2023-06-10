@@ -56,12 +56,12 @@ class _PostPageState extends State<PostPage> {
                 height: size.height * 0.01,
               ),
               Expanded(
-                child: FutureBuilder<List<c.comment>>(
+                child: FutureBuilder<List<c.comments>>(
                   future: postController.fetchComments(widget.post.Id),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       if (snapshot.data!.isNotEmpty) {
-                        List<c.comment> comment = snapshot.data!;
+                        List<c.comments> comment = snapshot.data!;
                         return ListView.separated(
                           //125:53 (Ilyasa)
                           itemBuilder: (context, index) {
