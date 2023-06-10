@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rest_api/controllers/post_controllers.dart';
 import 'package:rest_api/models/comment.dart' as c;
 import 'package:rest_api/models/post.dart';
+import 'package:rest_api/utils/endpoint.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key, required this.post});
@@ -36,7 +37,23 @@ class _PostPageState extends State<PostPage> {
                 ),
               ),
               SizedBox(
-                height: size.width * 0.02,
+                height: size.height * 0.01,
+              ),
+              SizedBox(
+                height: size.width,
+                child: Text(
+                  widget.post.body,
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              const Text(
+                "Komentar",
+              ),
+              SizedBox(
+                height: size.height * 0.01,
               ),
               Expanded(
                 child: FutureBuilder<List<c.comment>>(
@@ -47,10 +64,17 @@ class _PostPageState extends State<PostPage> {
                         List<c.comment> comment = snapshot.data!;
                         return ListView.separated(
                           //125:53 (Ilyasa)
-                          itemBuilder: (context, index) {},
+                          itemBuilder: (context, index) {
+                            return Card(
+                              child: ListTile(
+                                title: Text(comment[index].name),
+                                subtitle: Text(comment[index].body),
+                              ),
+                            );
+                          },
                           separatorBuilder: (context, index) {
                             return SizedBox(
-                              height: size.height * 0.01,
+                              height: size.height * 0.0005,
                             );
                           },
                           itemCount: comment.length,
@@ -62,7 +86,13 @@ class _PostPageState extends State<PostPage> {
                       }
                     } else if (snapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return const CircularProgressIndicator();
+                      return AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: SizedBox(
+                            width: size.width * 0.2,
+                            height: size.width * 0.2,
+                            child: const CircularProgressIndicator(),
+                          ));
                     } else {
                       return Text("err");
                     }

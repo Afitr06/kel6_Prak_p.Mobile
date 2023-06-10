@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rest_api/models/post.dart';
+import 'package:rest_api/pages/add_post_page.dart';
 import 'package:rest_api/pages/home_page.dart';
 import 'package:rest_api/pages/post.page.dart';
 
 class AppRoutes {
   static const home = "home";
   static const post = "post";
+  static const addPost = "add-post";
 
   static Page _homePageBuilder(BuildContext context, GoRouterState state) {
     return const MaterialPage(
@@ -22,6 +24,12 @@ class AppRoutes {
     );
   }
 
+  static Page _addPostPageBuilder(BuildContext context, GoRouterState state) {
+    return const MaterialPage(
+      child: addPostPage(),
+    );
+  }
+
   static GoRouter goRouter = GoRouter(
     initialLocation: "/home",
     routes: [
@@ -34,6 +42,11 @@ class AppRoutes {
             name: post,
             path: "post",
             pageBuilder: _postPageBuilder,
+          ),
+          GoRoute(
+            name: addPost,
+            path: "add-post",
+            pageBuilder: _addPostPageBuilder,
           ),
         ],
       ),

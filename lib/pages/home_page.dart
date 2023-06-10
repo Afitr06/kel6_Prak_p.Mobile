@@ -90,13 +90,19 @@ class _HomePageState extends State<HomePage> {
                 //Menit ke 48:43
                 return Text("ada Data");
               } else {
-                return Text("tidak ada Data yang di dapatkan");
+                return const Text("tidak ada Data yang di dapatkan");
               }
             } else {
-              return Text("error");
+              return const Text("error");
             }
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          AppRoutes.goRouter.pushNamed(AppRoutes.addPost);
+        },
+        label: const Text("Tambah Berita"),
       ),
     );
   }
