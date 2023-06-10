@@ -33,10 +33,10 @@ class _HomePageState extends State<HomePage> {
                 //Menit ke 48:43
                 return Text("ada Data");
               } else {
-                return Text("tidak ada Data");
+                return Text("tidak ada Data yang di dapatkan");
               }
             } else {
-              return Text("err");
+              return Text("error");
             }
           },
         ),
