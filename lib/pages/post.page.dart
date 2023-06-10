@@ -46,6 +46,7 @@ class _PostPageState extends State<PostPage> {
                       if (snapshot.data!.isNotEmpty) {
                         List<c.comment> comment = snapshot.data!;
                         return ListView.separated(
+                          //125:53 (Ilyasa)
                           itemBuilder: (context, index) {},
                           separatorBuilder: (context, index) {
                             return SizedBox(
@@ -56,7 +57,7 @@ class _PostPageState extends State<PostPage> {
                         );
                       } else {
                         return const Text(
-                          "Belum ada komentar",
+                          "Belum ada yang berkomentar",
                         );
                       }
                     } else if (snapshot.connectionState ==
