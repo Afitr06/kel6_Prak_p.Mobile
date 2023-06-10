@@ -20,7 +20,7 @@ class _addPostPageState extends State<addPostPage> {
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
           child: Column(
             children: [
-              TextFormField(),
+              TextFormField(),//139:54 (Deni)
             ],
           ),
         ),
